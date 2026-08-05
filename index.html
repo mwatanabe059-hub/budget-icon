@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="予算確認">
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  >
+  <meta name="theme-color" content="#2563eb">
+
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="./icon.png"
+  >
+  <link
+    rel="icon"
+    type="image/png"
+    href="./icon.png"
+  >
+
+  <title>予算確認</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding:
+        calc(24px + env(safe-area-inset-top))
+        24px
+        calc(24px + env(safe-area-inset-bottom));
+      background: linear-gradient(145deg, #2563eb, #1677f2);
+      color: #ffffff;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Sans",
+        "Yu Gothic",
+        sans-serif;
+    }
+
+    .card {
+      width: min(100%, 380px);
+      padding: 32px 24px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 24px 60px rgba(0, 35, 110, 0.28);
+      text-align: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .icon {
+      width: 112px;
+      height: 112px;
+      margin-bottom: 20px;
+      border-radius: 26px;
+      box-shadow: 0 14px 30px rgba(0, 30, 100, 0.28);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    p {
+      margin: 0 0 24px;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    .button {
+      display: block;
+      padding: 15px;
+      border-radius: 14px;
+      background: #ffffff;
+      color: #2563eb;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .loading {
+      margin-top: 18px;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <img
+      class="icon"
+      src="./icon.png"
+      alt="予算確認"
+    >
+
+    <h1>予算確認</h1>
+
+    <p>
+      予算ダッシュボードを開きます。
+    </p>
+
+    <a
+      id="openButton"
+      class="button"
+      href="https://script.google.com/macros/s/AKfycbxHN_5LFzyyVYFVBQyIYHWMCYGog1P3PE7K-Dxa-ehXiRm1DiJkJhjD48dbBIHodYIV3w/exec"
+    >
+      ダッシュボードを開く
+    </a>
+
+    <div class="loading">
+      ホーム画面から起動した場合は自動で移動します
+    </div>
+  </main>
+
+  <script>
+    const APP_URL =
+      "https://script.google.com/macros/s/AKfycbxHN_5LFzyyVYFVBQyIYHWMCYGog1P3PE7K-Dxa-ehXiRm1DiJkJhjD48dbBIHodYIV3w/exec";
+
+    const isStandalone =
+      window.navigator.standalone === true ||
+      window.matchMedia("(display-mode: standalone)").matches;
+
+    if (isStandalone) {
+      setTimeout(function () {
+        window.location.replace(APP_URL);
+      }, 300);
+    }
+  </script>
+</body>
+</html>
